@@ -30,6 +30,7 @@ app.use((req, res, next) => {
 //static help page
 app.use(express.static(__dirname + '/public'));
 
+//Helper files will pass items back to the app
 hbs.registerHelper('getCurrentYear', () => {
   return new Date().getFullYear();
 });
@@ -41,6 +42,13 @@ hbs.registerHelper('screamIt', (text) => {
 app.get('/', (req, res) => {
   res.render('home.hbs', {
     pageTitle: 'Home Page',
+    welcomeMessage: 'Asaaaah Duh! Welcome to da page!'
+  });
+});
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects Page',
     welcomeMessage: 'Asaaaah Duh! Welcome to da page!'
   });
 });
